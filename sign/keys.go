@@ -33,10 +33,10 @@ import (
 	"os"
 
 	Ed "crypto/ed25519"
+
+	"github.com/opencoff/sigtool/utils"
 	"golang.org/x/crypto/scrypt"
 	"gopkg.in/yaml.v2"
-
-	"github.com/opencoff/go-utils"
 )
 
 // Private Ed25519 key
@@ -522,13 +522,13 @@ func fileCksum(fn string, h hash.Hash) ([]byte, error) {
 
 	defer fd.Close()
 
-	sz, err := utils.MmapReader(fd, 0, 0, h)
+	sz, err := utils.Mmap(fd, 0) 
 	if err != nil {
 		return nil, err
 	}
 
 	var b [8]byte
-	binary.BigEndian.PutUint64(b[:], uint64(sz))
+	binary.BigEndian.PutUint64(b[:], uint64(bytes.Index(sz, []byte{0})))
 	h.Write(b[:])
 
 	return h.Sum(nil)[:], nil
