@@ -21,9 +21,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/opencoff/go-utils"
 	flag "github.com/opencoff/pflag"
 	"github.com/opencoff/sigtool/sign"
+	"github.com/opencoff/sigtool/utils"
 )
 
 var Z string = path.Base(os.Args[0])

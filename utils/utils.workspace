@@ -1,0 +1,4 @@
+// utils.go -- utilites functions
+// port of some required functions from "github.com/opencoff/go-utils"
+
+package utils

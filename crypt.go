@@ -20,9 +20,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/opencoff/go-utils"
 	flag "github.com/opencoff/pflag"
 	"github.com/opencoff/sigtool/sign"
+	"github.com/opencoff/sigtool/utils"
 )
 
 // sigtool encrypt [-i|--identity my.key] to.pub [to.pub] [ssh.pub] inputfile|- [-o output]
@@ -35,8 +35,8 @@ func encrypt(args []string) {
 
 	var outfile string
 	var keyfile string
-	var szstr   string = "128k"
-	var envpw   string
+	var szstr string = "128k"
+	var envpw string
 	var nopw, force bool
 	var blksize uint64
 
